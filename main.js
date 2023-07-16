@@ -7,13 +7,15 @@ function listen() {
   var host = server.address().address
   var port = server.address().port
 }
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
 
 app.use(express.static('public'))
 
 var io = require('socket.io')(server)
 
 app.get("/", (req, res)=>{
-    res.render("views/head");
+    res.render("views\\head");
 })
 io.sockets.on(
   'connection',
